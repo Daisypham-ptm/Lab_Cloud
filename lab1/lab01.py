@@ -45,7 +45,7 @@ def workers(rate, per_worker, tolerated_failures=0):
 
     # Kiểm tra các giá trị phải hữu hạn
     if not demand.is_finite() or not capacity.is_finite():
-        raise ValueError("Rate and per_worker must be finite")
+        raise ValueError("Rate và per_worker phải hữu hạn")
 
     # Nhu cầu phải không âm, năng lực mỗi worker phải dương
     if demand < 0:
