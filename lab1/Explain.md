@@ -30,7 +30,7 @@ egress_cost   = egress_gb × egress_rate
 
 total_cost    = compute_cost + storage_cost + requests_cost + egress_cost
 ```
-### Minh hoạ `estimate()`
+### Ví dụ
 
 Dữ liệu đầu vào (minh họa): 60 hoặc 720 giờ compute, 0.04/giờ; 10 GB lưu trữ, 0.02/GB-tháng; 2.000.000 request, 0.20/triệu; 5 GB egress, 0.09/GB.
 
@@ -63,7 +63,7 @@ base_workers = ceil(rate / per_worker)
 workers      = base_workers + tolerated_failures
 ```
 
-### Minh hoạ `workers()`
+### Ví dụ
 
 Dữ liệu đầu vào: `rate` = 180 request/s, `per_worker` = 40 request/s, `tolerated_failures` = 1.
 
