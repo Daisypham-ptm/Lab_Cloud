@@ -43,6 +43,10 @@ def workers(rate, per_worker, tolerated_failures=0):
     except Exception:
         raise ValueError("Đầu vào phải là giá trị số")
 
+    # Kiểm tra các giá trị phải hữu hạn
+    if not demand.is_finite() or not capacity.is_finite():
+        raise ValueError("Rate and per_worker must be finite")
+
     # Nhu cầu phải không âm, năng lực mỗi worker phải dương
     if demand < 0:
         raise ValueError("rate phải không âm")
