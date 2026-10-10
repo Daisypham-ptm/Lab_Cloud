@@ -51,7 +51,7 @@ def workers(rate, per_worker, tolerated_failures=0):
         raise ValueError("per_worker phải là dương")
 
     # Số worker lỗi cho phép phải là số nguyên không âm
-    if tolerated_failures < 0:
+    if tolerated_failures < 0 or type(tolerated_failures) != int:
         raise ValueError("tolerated_failures phải là số nguyên không âm")
 
     # Tính số worker cơ sở bằng phép làm tròn lên
