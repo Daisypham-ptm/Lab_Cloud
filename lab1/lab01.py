@@ -36,17 +36,28 @@ def estimate(compute_hours, hourly_rate, storage_gb, storage_rate, requests, per
     }
 
 def workers(rate, per_worker, tolerated_failures=0):
+    # Chuyển đầu vào sang decimal
     try:
-        r = float(rate)
-        pw = float(per_worker)
-        tf = float(tolerated_failures)
-    except (TypeError, ValueError):
-        raise ValueError("Đầu vào phải là số.")
+        demand = Decimal(str(rate))
+        capacity = Decimal(str(per_worker))
+    except Exception:
+        raise ValueError("Đầu vào phải là giá trị số")
 
-    if not (math.isfinite(r) and math.isfinite(pw) and math.isfinite(tf)):
-        raise ValueError("Đầu vào phải là số hữu hạn.")
+    # Nhu cầu phải không âm, năng lực mỗi worker phải dương
+    if demand < 0:
+        raise ValueError("rate phải không âm")
 
-    if r < 0 or pw <= 0 or tf < 0:
-        raise ValueError("Nhu cầu và tolerated_failures phải >= 0, per_worker phải > 0.")
+    if capacity <= 0:
+        raise ValueError("per_worker phải là dương")
 
-    return math.ceil(r / pw) + int(tf)
+    # Số worker lỗi cho phép phải là số nguyên không âm
+    if tolerated_failures < 0:
+        raise ValueError("tolerated_failures phải là số nguyên không âm")
+
+    # Tính số worker cơ sở bằng phép làm tròn lên
+    base_workers = int(
+        (demand / capacity).to_integral_value(rounding=ROUND_CEILING)
+    )
+
+    # Cộng thêm worker dự phòng để chịu được số worker bị lỗi
+    return base_workers + tolerated_failures
