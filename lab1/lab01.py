@@ -1,7 +1,7 @@
 # Complete every function.
 """Illustrative cost model; these inputs are NOT provider prices."""
 import math
-from decimal import Decimal, ROUND_HALF_EVEN, InvalidOperation
+from decimal import Decimal, ROUND_HALF_EVEN, InvalidOperation, ROUND_CEILING
 
 def estimate(compute_hours, hourly_rate, storage_gb, storage_rate, requests, per_million, egress_gb, egress_rate):
     inputs = [compute_hours, hourly_rate, storage_gb, storage_rate, requests, per_million, egress_gb, egress_rate]
