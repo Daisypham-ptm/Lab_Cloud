@@ -25,7 +25,10 @@ def estimate(compute_hours, hourly_rate, storage_gb, storage_rate, requests, per
     total_cost = compute_cost + storage_cost + requests_cost + egress_cost
 
     def format_two_decimals(val):
-        return str(val.quantize(Decimal('0.01'), rounding=ROUND_HALF_EVEN))
+        q = val.quantize(Decimal('0.01'), rounding=ROUND_HALF_EVEN)
+        if q == 0:
+            q = abs(q)   # tránh in "-0.00"
+        return str(q)
 
     return {
         "compute": format_two_decimals(compute_cost),
@@ -55,7 +58,7 @@ def workers(rate, per_worker, tolerated_failures=0):
         raise ValueError("per_worker phải là dương")
 
     # Số worker lỗi cho phép phải là số nguyên không âm
-    if tolerated_failures < 0 or type(tolerated_failures) != int:
+    if type(tolerated_failures) is not int or tolerated_failures < 0:
         raise ValueError("tolerated_failures phải là số nguyên không âm")
 
     # Tính số worker cơ sở bằng phép làm tròn lên
