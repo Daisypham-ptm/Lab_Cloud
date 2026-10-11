@@ -1,0 +1,65 @@
+test_all_values_are_strings_two_decimals (test_lab01.TestEstimate.test_all_values_are_strings_two_decimals) ... ok
+test_case_60_hours (test_lab01.TestEstimate.test_case_60_hours) ... ok
+test_case_720_hours (test_lab01.TestEstimate.test_case_720_hours) ... ok
+test_half_even_rounding (test_lab01.TestEstimate.test_half_even_rounding) ... ok
+test_invalid_string_rejected (test_lab01.TestEstimate.test_invalid_string_rejected) ... ok
+test_keys (test_lab01.TestEstimate.test_keys) ... ok
+test_negative_rejected_each_argument (test_lab01.TestEstimate.test_negative_rejected_each_argument) ... ok
+test_negative_zero_not_printed (test_lab01.TestEstimate.test_negative_zero_not_printed) ... FAIL
+test_no_float_error (test_lab01.TestEstimate.test_no_float_error) ... ok
+test_nonfinite_rejected (test_lab01.TestEstimate.test_nonfinite_rejected) ... ok
+test_only_compute_changes (test_lab01.TestEstimate.test_only_compute_changes) ... ok
+test_requests_billed_per_million (test_lab01.TestEstimate.test_requests_billed_per_million) ... ok
+test_string_and_numeric_inputs (test_lab01.TestEstimate.test_string_and_numeric_inputs) ... ok
+test_total_summed_before_rounding (test_lab01.TestEstimate.test_total_summed_before_rounding) ... ok
+test_zero_usage (test_lab01.TestEstimate.test_zero_usage) ... ok
+test_ceiling_not_round (test_lab01.TestWorkers.test_ceiling_not_round) ... ok
+test_decimal_and_string_inputs (test_lab01.TestWorkers.test_decimal_and_string_inputs) ... ok
+test_default_failures_zero (test_lab01.TestWorkers.test_default_failures_zero) ... ok
+test_exact_division (test_lab01.TestWorkers.test_exact_division) ... ok
+test_invalid_failures (test_lab01.TestWorkers.test_invalid_failures) ... 
+  test_invalid_failures (test_lab01.TestWorkers.test_invalid_failures) (bad='1') ... ERROR
+  test_invalid_failures (test_lab01.TestWorkers.test_invalid_failures) (bad=None) ... ERROR
+test_invalid_per_worker (test_lab01.TestWorkers.test_invalid_per_worker) ... ok
+test_invalid_rate (test_lab01.TestWorkers.test_invalid_rate) ... ok
+test_supplied_case (test_lab01.TestWorkers.test_supplied_case) ... ok
+test_zero_demand (test_lab01.TestWorkers.test_zero_demand) ... ok
+
+======================================================================
+ERROR: test_invalid_failures (test_lab01.TestWorkers.test_invalid_failures) (bad='1')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\UTH\Điện toán đám mây\Lab_Cloud\lab1\test_lab01.py", line 135, in test_invalid_failures
+    workers(180, 40, bad)
+  File "D:\UTH\Điện toán đám mây\Lab_Cloud\lab1\lab01.py", line 58, in workers
+    if tolerated_failures < 0 or type(tolerated_failures) != int:
+       ^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'str' and 'int'
+
+======================================================================
+ERROR: test_invalid_failures (test_lab01.TestWorkers.test_invalid_failures) (bad=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\UTH\Điện toán đám mây\Lab_Cloud\lab1\test_lab01.py", line 135, in test_invalid_failures
+    workers(180, 40, bad)
+  File "D:\UTH\Điện toán đám mây\Lab_Cloud\lab1\lab01.py", line 58, in workers
+    if tolerated_failures < 0 or type(tolerated_failures) != int:
+       ^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'NoneType' and 'int'
+
+======================================================================
+FAIL: test_negative_zero_not_printed (test_lab01.TestEstimate.test_negative_zero_not_printed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\UTH\Điện toán đám mây\Lab_Cloud\lab1\test_lab01.py", line 92, in test_negative_zero_not_printed
+    self.assertEqual(estimate("-0", 1, 0, 0, 0, 0, 0, 0)["compute"], "0.00")
+AssertionError: '-0.00' != '0.00'
+- -0.00
+? -
++ 0.00
+
+
+----------------------------------------------------------------------
+Ran 24 tests in 0.005s
+
+FAILED (failures=1, errors=2)
