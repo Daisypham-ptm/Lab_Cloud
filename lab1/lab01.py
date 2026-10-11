@@ -1,5 +1,5 @@
 # Complete every function.
-"""Illustrative cost model; these inputs are NOT provider prices."""
+"""Illustrative cost model; these inputs are NOT provider prices.""" 
 import math
 from decimal import Decimal, ROUND_HALF_EVEN, InvalidOperation, ROUND_CEILING
 
